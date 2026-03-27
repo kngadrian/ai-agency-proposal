@@ -223,6 +223,22 @@
     border-color: var(--border-bright);
   }
 
+  /* Keyframe: spinner (for future async states) */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Keyframe: toast out */
+  @keyframes toastOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(10px); }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
   /* Toast */
   .toast {
     position: fixed;
@@ -686,6 +702,8 @@
   }
 
   /* ── PRINT ── */
+  @page { margin: 16mm 12mm; }
+
   @media print {
     body { background: white !important; color: black !important; }
     .no-print { display: none !important; }
